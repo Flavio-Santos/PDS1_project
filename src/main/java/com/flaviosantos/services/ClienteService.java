@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.flaviosantos.domain.Cliente;
-import com.flaviosantos.domain.Cliente;
 import com.flaviosantos.repositories.ClienteRepository;
 import com.flaviosantos.services.exceptions.ObjectNotFoundException;
 
