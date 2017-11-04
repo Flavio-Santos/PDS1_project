@@ -14,6 +14,7 @@ import com.flaviosantos.domain.Cidade;
 import com.flaviosantos.domain.Cliente;
 import com.flaviosantos.domain.Endereco;
 import com.flaviosantos.domain.Estado;
+import com.flaviosantos.domain.ItemPedido;
 import com.flaviosantos.domain.Pagamento;
 import com.flaviosantos.domain.PagamentoComBoleto;
 import com.flaviosantos.domain.PagamentoComCartao;
@@ -26,6 +27,7 @@ import com.flaviosantos.repositories.CidadeRepository;
 import com.flaviosantos.repositories.ClienteRepository;
 import com.flaviosantos.repositories.EnderecoRepository;
 import com.flaviosantos.repositories.EstadoRepository;
+import com.flaviosantos.repositories.ItemPedidoRepository;
 import com.flaviosantos.repositories.PagamentoRepository;
 import com.flaviosantos.repositories.PedidoRepository;
 import com.flaviosantos.repositories.ProdutoRepository;
@@ -61,6 +63,9 @@ public class WorkPds1Application implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	@Override
 	public void run(String... arg0) throws Exception {
@@ -124,5 +129,18 @@ public class WorkPds1Application implements CommandLineRunner{
 		
 		pedidoRepository.save(Arrays.asList(ped1, ped2));
 		pagamentoRepository.save(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.0);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.save(Arrays.asList(ip1, ip2, ip3));
 	}
 }
