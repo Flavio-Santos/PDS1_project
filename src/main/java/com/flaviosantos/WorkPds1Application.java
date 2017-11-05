@@ -72,6 +72,11 @@ public class WorkPds1Application implements CommandLineRunner{
 		
 		Categoria cat1 = new Categoria(null, "informatica");
 		Categoria cat2 = new Categoria(null, "escritorio");
+		Categoria cat3 = new Categoria(null, "Came, Mesa e Banho");
+		Categoria cat4 = new Categoria(null, "Eletronicos");
+		Categoria cat5 = new Categoria(null, "Jardinagem");
+		Categoria cat6 = new Categoria(null, "Decoração");
+		Categoria cat7 = new Categoria(null, "Perfumaria");
 		
 		Produto p1 = new Produto(null, "computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 800.00);
@@ -96,7 +101,7 @@ public class WorkPds1Application implements CommandLineRunner{
 		
 		
 		
-		categoriaRepositorie.save(Arrays.asList(cat1,cat2));
+		categoriaRepositorie.save(Arrays.asList(cat1,cat2,cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.save(Arrays.asList(p1,p2,p3));
 		
 		estadoRepository.save(Arrays.asList(est1, est2));
