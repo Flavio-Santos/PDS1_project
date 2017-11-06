@@ -10,7 +10,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.flaviosantos.domain.Cliente;
-import com.flaviosantos.domain.Cliente;
 import com.flaviosantos.dto.ClienteDTO;
 import com.flaviosantos.repositories.ClienteRepository;
 import com.flaviosantos.services.exceptions.DataIntegrityException;
