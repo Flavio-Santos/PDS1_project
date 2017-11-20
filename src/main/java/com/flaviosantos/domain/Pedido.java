@@ -49,6 +49,23 @@ public class Pedido implements Serializable{
 		
 	}
 
+	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
+		super();
+		this.id = id;
+		this.instante = instante;
+		this.cliente = cliente;
+		this.enderecoDeEntrega = enderecoDeEntrega;
+	}
+	
+	public double getValorTotal() {
+		double soma = 0.0;
+		for (ItemPedido ip : itens) {
+			soma = soma + ip.getSubTotal();
+		}
+		return soma;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,13 +131,6 @@ public class Pedido implements Serializable{
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
-	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
-		super();
-		this.id = id;
-		this.instante = instante;
-		this.cliente = cliente;
-		this.enderecoDeEntrega = enderecoDeEntrega;
-	}
 
 	public Set<ItemPedido> getItens() {
 		return itens;
