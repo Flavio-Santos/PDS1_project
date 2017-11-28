@@ -21,6 +21,7 @@ import com.flaviosantos.domain.PagamentoComCartao;
 import com.flaviosantos.domain.Pedido;
 import com.flaviosantos.domain.Produto;
 import com.flaviosantos.domain.enums.EstadoPagamento;
+import com.flaviosantos.domain.enums.Perfil;
 import com.flaviosantos.domain.enums.TipoCliente;
 import com.flaviosantos.repositories.CategoriaRepository;
 import com.flaviosantos.repositories.CidadeRepository;
@@ -135,13 +136,19 @@ public class WorkPds1Application implements CommandLineRunner{
 		Cliente cli1 = new Cliente(null, "maria Silva", "flavio.santos.pro@gmail.com", "321321", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("321321", "31321"));
 		
+		Cliente cli2 = new Cliente(null, "Ana Costa", "flaviosantos14@hotmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		 cli2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
+		 cli2.addPerfil(Perfil.ADMIN);
+		
 		Endereco e1 = new Endereco(null, "flores", "300", "apto 303", "jardim", "3213213", cli1, c1);
 		Endereco e2 = new Endereco(null, "avenida matos", "105", "sala 800", "centro", "32132132", cli1, c2);
+		Endereco e3 = new Endereco(null, "Avenida Floriano", "2106", null, "Centro", "281777012", cli2, c2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		cli2.getEnderecos().addAll(Arrays.asList(e3));
 		
-		clienteRepository.save(Arrays.asList(cli1));
-		enderecoRepository.save(Arrays.asList(e1,e2));
+		clienteRepository.save(Arrays.asList(cli1, cli2));
+		enderecoRepository.save(Arrays.asList(e1, e2, e3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy hh:mm");
 		
