@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.flaviosantos.domain.Categoria;
 import com.flaviosantos.domain.Cidade;
@@ -65,6 +66,9 @@ public class WorkPds1Application implements CommandLineRunner{
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	@Override
 	public void run(String... arg0) throws Exception {
@@ -128,7 +132,7 @@ public class WorkPds1Application implements CommandLineRunner{
 		estadoRepository.save(Arrays.asList(est1, est2));
 		cidadeRepository.save(Arrays.asList(c1,c2,c3));
 		
-		Cliente cli1 = new Cliente(null, "maria Silva", "flavio.santos.pro@gmail.com", "321321", TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "maria Silva", "flavio.santos.pro@gmail.com", "321321", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("321321", "31321"));
 		
 		Endereco e1 = new Endereco(null, "flores", "300", "apto 303", "jardim", "3213213", cli1, c1);

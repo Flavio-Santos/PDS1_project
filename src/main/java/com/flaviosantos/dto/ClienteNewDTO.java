@@ -9,44 +9,46 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.flaviosantos.services.validation.ClienteInsert;
 
 @ClienteInsert
-public class ClienteNewDTO implements Serializable{
-	
+public class ClienteNewDTO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
+	@Length(min = 5, max = 80, message = "O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
-	@Email(message= "email inválido")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
+	@Email(message = "email inválido")
 	private String email;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
 	private String cpfOuCnpj;
-	
+
+	@NotEmpty(message = "Preenchimento obrigatório")
+	private String senha;
+
 	private Integer tipo;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
 	private String logradouro;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
 	private String numero;
-	
-	
+
 	private String complemento;
 	private String bairro;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
 	private String cep;
-	
-	@NotEmpty(message="Preenchimento Obrigatório")
+
+	@NotEmpty(message = "Preenchimento Obrigatório")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
-	
+
 	private Integer cidadeId;
-	
-	public ClienteNewDTO(){
+
+	public ClienteNewDTO() {
 	}
 
 	public String getNome() {
@@ -59,6 +61,14 @@ public class ClienteNewDTO implements Serializable{
 
 	public String getEmail() {
 		return email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public void setEmail(String email) {
@@ -152,6 +162,5 @@ public class ClienteNewDTO implements Serializable{
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
 	}
-	
-	
+
 }
